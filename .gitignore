@@ -1,0 +1,59 @@
+# Django project directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+*.log
+*.pot
+*.pyc
+local_settings.py
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Development files
+*.bak
+*.swp
+.DS_Store
+.idea/
+.vscode/
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Testing and coverage
+.coverage
+.coverage.*
+nosetests.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Ignore migrations if not needed
+*/migrations/*.py
+# */migrations/*.pyc
+# */migrations/__pycache__/
+
+# Ignore any local settings you might have changed
+# local_settings.py
+
+# Ignore logs and other potentially generated files
+*.log
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+
+# Ignore personal IDE configuration
+.idea/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore database configuration
+db.sqlite3
