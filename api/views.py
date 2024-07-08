@@ -57,6 +57,7 @@ class OrganisationViewset(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             instance = serializer.save()
+            instance.users.add(request.user)
             response_data = {
                 "status": "success",
                 "message": "Organisation created successfully.",
