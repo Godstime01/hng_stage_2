@@ -12,10 +12,10 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', "True") == 'True'
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = ["*", ".vercel.app"]
 
@@ -74,21 +74,26 @@ if DEBUG:
         }
     }
 else:
-    # print("REACH HERE", os.getenv("DATABASE_URL"))
-    # db_from_env = dj_database_url.config(
-    #     default=os.getenv('DATABASE_URL')
-    # )
-    # DATABASES = {"default": db_from_env}
+    # DATABASES = {
+    #     "default": {
+    #         "ENGINE": "django.db.backends.postgresql_psycopg2",
+    #         "NAME": os.environ.get("DB_NAME"),
+    #         "USER": os.environ.get("DB_USER"),xuu
+    #         "PASSWORD": os.environ.get("DB_PASSWORD"),
+    #         "HOST": os.environ.get("DB_HOST"),
+    #         "PORT": os.environ.get("DB_PORT"),
+    #     }
+    # }
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("DB_NAME"),
-        'USER': os.environ.get("DB_USER"),
-        'PASSWORD': os.environ.get("DB_PASSWORD"),
-        'HOST': os.environ.get("DB_HOST"),
-        'PORT': os.environ.get("DB_PORT"),
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "postgres",
+            "USER": "postgres.bwgqwwqfseylgeeunqau",
+            "PASSWORD": "Dmj5aNxi83U@D#E",
+            "HOST": "aws-0-eu-central-1.pooler.supabase.com",
+            "PORT": "6543",
+        }
     }
-}
 
 
 AUTH_PASSWORD_VALIDATORS = [
