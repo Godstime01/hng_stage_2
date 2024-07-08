@@ -3,7 +3,7 @@ import pytest
 from django.urls import reverse
 from rest_framework.test import APIClient
 
-from ..models import Organisation
+from ..models import Organisation, UserModel
 
 
 @pytest.fixture
@@ -65,3 +65,14 @@ class TestOrganinsations:
         assert response.data["status"] == "Bad Request"
         assert response.data["message"] == "Client error"
         assert response.data['statusCode'] == 400
+
+    def test_access_organization_details_unauthorized(self):
+        user = UserModel.objects.create_user(
+            first_name='john',
+            last_name='doe',
+            email='john.doe@example.com',
+            password='password123',
+        )
+        client = APICli
+
+        assert response.status_code == 403

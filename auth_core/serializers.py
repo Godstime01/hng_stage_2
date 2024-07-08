@@ -2,16 +2,6 @@ from rest_framework import serializers
 from .models import UserModel
 
 
-def custom_error_response(errors):
-    print(errors)
-
-    error_list = []
-    for field, messages in errors.items():
-        for message in messages:
-            error_list.append({"field": field, "message": message})
-    return {"errors": error_list}
-
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
