@@ -74,26 +74,17 @@ if DEBUG:
         }
     }
 else:
-    # DATABASES = {
-    #     "default": {
-    #         "ENGINE": "django.db.backends.postgresql_psycopg2",
-    #         "NAME": os.environ.get("DB_NAME"),
-    #         "USER": os.environ.get("DB_USER"),xuu
-    #         "PASSWORD": os.environ.get("DB_PASSWORD"),
-    #         "HOST": os.environ.get("DB_HOST"),
-    #         "PORT": os.environ.get("DB_PORT"),
-    #     }
-    # }
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": "postgres",
-            "USER": "postgres.bwgqwwqfseylgeeunqau",
-            "PASSWORD": "Dmj5aNxi83U@D#E",
-            "HOST": "aws-0-eu-central-1.pooler.supabase.com",
-            "PORT": "6543",
+            "NAME": os.getenv("DB_NAME"),
+            "USER": os.getenv("DB_USER"),
+            "PASSWORD": os.getenv("DB_PASSWORD"),
+            "HOST": os.getenv("DB_HOST"),
+            "PORT": os.getenv("DB_PORT"),
         }
     }
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
