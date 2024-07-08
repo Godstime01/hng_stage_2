@@ -41,16 +41,15 @@ class UserView(APIView):
             data = {
                 "status": "Bad request",
                 "message": "Registration unsuccessful",
-                "statusCode": 400,
+                "statusCode": 422,
                 "errors": errors,
             }
             return Response(data=data, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
+        
         data = {
             "status": "Bad request",
             "message": "Registration unsuccessful",
             "statusCode": 400,
-            "errors": serializer.errors,
         }
 
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
@@ -79,8 +78,8 @@ class LoginView(APIView):
                     "user": {
                         "userId": user.userId,
                         "email": user.email,
-                        "firstName": user.first_name,
-                        "lastName": user.last_name,
+                        "firstName": user.firstName,
+                        "lastName": user.lastName,
                         "phone": user.phone,
                     },
                 },

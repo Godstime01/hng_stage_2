@@ -39,7 +39,7 @@ class OrganisationViewset(viewsets.ModelViewSet):
         response_data = {
             "status": "success",
             "message": "Organisations retrieved successfully.",
-            "data": {"organisations": serializer.data},
+            "data": {"Organisations": serializer.data},
         }
         return Response(response_data, status=status.HTTP_200_OK)
 

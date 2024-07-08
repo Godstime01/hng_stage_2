@@ -19,7 +19,7 @@ class Organisation(models.Model):
 @receiver(post_save, sender=UserModel)
 def organisation_created_handler(sender, instance, created, **kwargs):
     if created:
-        name = f"{instance.first_name}'s Organisation"
+        name = f"{instance.firstName}'s Organisation"
         org = Organisation.objects.create(name=name)
         org.users.add(instance)
         org.save()

@@ -65,6 +65,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hng_stage_2.wsgi.application"
 
+
 if DEBUG:
     DATABASES = {
         "default": {
@@ -73,6 +74,7 @@ if DEBUG:
         }
     }
 else:
+    print("REACH HERE", os.getenv("DATABASE_URL"))
     db_from_env = dj_database_url.config(
         default=os.getenv('DATABASE_URL')
     )

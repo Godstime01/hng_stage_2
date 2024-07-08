@@ -10,7 +10,7 @@ from django.contrib.auth.models import (
 
 class UserManager(BaseUserManager):
     def create_user(
-        self, email, first_name, last_name, phone=None, password=None, **extra_fields
+        self, email, firstName, lastName, phone=None, password=None, **extra_fields
     ):
         """
         Creates and saves a User with the given email, first name, last name, phone, and password.
@@ -20,8 +20,8 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(
             email=email,
-            first_name=first_name,
-            last_name=last_name,
+            firstName=firstName,
+            lastName=lastName,
             phone=phone,
             **extra_fields
         )
@@ -30,7 +30,7 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(
-        self, email, first_name, last_name, phone=None, password=None, **extra_fields
+        self, email, firstName, lastName, phone=None, password=None, **extra_fields
     ):
         """
         Creates and saves a superuser with the given email, first name, last name, phone, and password.
@@ -44,7 +44,7 @@ class UserManager(BaseUserManager):
             raise ValueError("Superuser must have is_superuser=True.")
 
         return self.create_user(
-            email, first_name, last_name, phone, password, **extra_fields
+            email, firstName, lastName, phone, password, **extra_fields
         )
 
 
@@ -52,8 +52,8 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     userId = models.UUIDField(
         primary_key=True, default=uuid.uuid4, unique=True, editable=False
     )
-    first_name = models.CharField(max_length=100, blank=False, null=False)
-    last_name = models.CharField(max_length=100, blank=False, null=False)
+    firstName = models.CharField(max_length=100, blank=False, null=False)
+    lastName = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(unique=True, blank=False, null=False)
     phone = models.CharField(max_length=16, blank=True, null=True)
     is_staff = models.BooleanField(default=False)
@@ -63,7 +63,7 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     username = None
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name"]
+    REQUIRED_FIELDS = ["firstName", "lastName"]
 
     objects = UserManager()
 
