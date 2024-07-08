@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', False) == 'True'
+DEBUG = os.getenv('DEBUG', "True") == 'True'
 
 ALLOWED_HOSTS = ["*", ".vercel.app"]
 
@@ -74,11 +74,21 @@ if DEBUG:
         }
     }
 else:
-    print("REACH HERE", os.getenv("DATABASE_URL"))
-    db_from_env = dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
-    )
-    DATABASES = {"default": db_from_env}
+    # print("REACH HERE", os.getenv("DATABASE_URL"))
+    # db_from_env = dj_database_url.config(
+    #     default=os.getenv('DATABASE_URL')
+    # )
+    # DATABASES = {"default": db_from_env}
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
+    }
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
